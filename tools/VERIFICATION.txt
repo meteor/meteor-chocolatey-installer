@@ -1,0 +1,4 @@
+﻿This Chocolatey package, which provides the Meteor open-source
+JavaScript platform, is maintained by the same maintainers of the Meteor
+open-source source project itself, which is overseen by Meteor
+Development Group, Inc.

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Test your packages in a test environment: https://github.com/chocolatey/chocolatey-test-environment -->
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>meteor</id>
+    <version>0.0.1-beta</version>
+    <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
+    <owners>Meteor Development Group, Inc.</owners>
+    <title>Meteor</title>
+    <authors>Meteor Development Group, Inc.</authors>
+    <projectUrl>https://meteor.com/</projectUrl>
+    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/meteor.png</iconUrl>-->
+    <copyright>2011-present</copyright>
+    <licenseUrl>https://raw.githubusercontent.com/meteor/meteor/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/meteor/meteor</projectSourceUrl>
+    <docsUrl>https://docs.meteor.com/</docsUrl>
+    <bugTrackerUrl>https://github.com/meteor/meteor/issues</bugTrackerUrl>
+    <tags>meteor</tags>
+    <summary>Meteor, the JavaScript App Platform</summary>
+    <description>
+      Meteor is an ultra-simple environment for building modern web
+      applications.
+
+      With Meteor you write apps:
+
+      * in modern JavaScript
+      * that send data over the wire, rather than HTML
+      * using your choice of popular open-source libraries
+    </description>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
