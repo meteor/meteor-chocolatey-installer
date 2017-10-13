@@ -1,4 +1,4 @@
-# Meteor Helpers
+﻿# Meteor Helpers
 #
 # "Temp" logic borrowed from Install-ChocolateyZipPackage: https://git.io/vdEZj
 $chocTempDir = $env:TEMP
