@@ -28,6 +28,8 @@
       * in modern JavaScript
       * that send data over the wire, rather than HTML
       * using your choice of popular open-source libraries
+
+      > As with the previous Meteor installer, Meteor will be installed into `%LocalAppData%\.meteor`, which also serves as a global cache for all Meteor packages.  Re-installing or uninstalling Meteor will automatically purge this directory.
     </description>
   </metadata>
   <files>
