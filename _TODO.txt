@@ -1,5 +1,0 @@
-﻿- tools\chocolateyUninstall.ps1 - remove if autouninstaller can 
-  automatically uninstall and you have nothing additional to do during 
-  uninstall
-- nuspec - fill this out, then clean out all the comments (you may wish
-  to leave the headers for the package vs software metadata)
