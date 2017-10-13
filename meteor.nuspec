@@ -5,7 +5,7 @@
   <metadata>
     <id>meteor</id>
     <version>0.0.1-beta</version>
-    <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
+    <packageSourceUrl>https://github.com/meteor/meteor-chocolatey-installer/</packageSourceUrl>
     <owners>Meteor Development Group, Inc.</owners>
     <title>Meteor</title>
     <authors>Meteor Development Group, Inc.</authors>
