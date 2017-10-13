@@ -10,7 +10,7 @@
     <title>Meteor</title>
     <authors>Meteor Development Group, Inc.</authors>
     <projectUrl>https://meteor.com/</projectUrl>
-    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/meteor.png</iconUrl>-->
+    <iconUrl>https://user-images.githubusercontent.com/841294/31560267-51ce4018-b05c-11e7-8951-d4b19bc61b25.png</iconUrl>
     <copyright>2011-present</copyright>
     <licenseUrl>https://raw.githubusercontent.com/meteor/meteor/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
