@@ -46,7 +46,7 @@ if (Test-Path -LiteralPath $bootstrapTarGzPath -PathType 'Leaf') {
     -Arch 'os.windows.x86_32' `
     -Release $packageParameters.RELEASE
   $bootstrapQueryString64 = New-BootstrapLinkQueryString `
-    -Arch 'os.windows.x86_32' <# TODO #> `
+    -Arch 'os.windows.x86_64' `
     -Release $packageParameters.RELEASE
   $installTarGzArgs = @{
     packageName   = $env:ChocolateyPackageName
