@@ -4,6 +4,8 @@ $ErrorActionPreference = 'Stop';
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
 Import-Module -Force "$toolsDir\helpers.psm1"
 
+$packageParameters = Get-PackageParameters
+
 $bootstrapLinkUrl = 'https://packages.meteor.com/bootstrap-link'
 
 $installerTempDir = Get-InstallerTempDirectory
@@ -40,10 +42,16 @@ if (Test-Path -LiteralPath $bootstrapTarGzPath -PathType 'Leaf') {
   }
   Get-ChocolateyUnzip @unzipLocalTarGzArgs
 } else {
+  $bootstrapQueryString32 = New-BootstrapLinkQueryString `
+    -Arch 'os.windows.x86_32' `
+    -Release $packageParameters.RELEASE
+  $bootstrapQueryString64 = New-BootstrapLinkQueryString `
+    -Arch 'os.windows.x86_32' <# TODO #> `
+    -Release $packageParameters.RELEASE
   $installTarGzArgs = @{
     packageName   = $env:ChocolateyPackageName
-    url           = "${bootstrapLinkUrl}?arch=os.windows.x86_32"
-    url64bit      = "${bootstrapLinkUrl}?arch=os.windows.x86_32" # TODO
+    url           = "${bootstrapLinkUrl}${bootstrapQueryString32}"
+    url64bit      = "${bootstrapLinkUrl}${bootstrapQueryString64}"
     unzipLocation = $installerTempDir
   }
   Install-ChocolateyZipPackage @installTarGzArgs

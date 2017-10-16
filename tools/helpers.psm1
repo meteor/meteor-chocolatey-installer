@@ -64,6 +64,25 @@ Function Remove-MeteorDataDirectory {
 
 <#
   .Synopsis
+  Obtain the query string parameters for the boostrap link
+#>
+Function New-BootstrapLinkQueryString {
+  Param (
+    [Parameter(Mandatory=$True, Position=0)]
+    [string]$Arch,
+    [Parameter(Position=1)]
+    [string]$Release
+  )
+
+  $queryString = "?arch=${Arch}"
+  if ($Release) {
+    $queryString += "&release=${Release}"
+  }
+  $queryString
+}
+
+<#
+  .Synopsis
   Remove longer directory paths in a more aggressive way.
 
   .Description
@@ -111,5 +130,6 @@ Export-ModuleMember -Function `
   Get-InstallerTempDirectory,
   Get-MeteorDataDirectory,
   Initialize-MeteorDataDirectory,
+  New-BootstrapLinkQueryString,
   Remove-OldMeteorInstall,
   Remove-MeteorDataDirectory
