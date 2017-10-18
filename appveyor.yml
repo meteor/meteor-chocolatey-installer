@@ -1,0 +1,47 @@
+version: '{build}'
+
+skip_branch_with_pr: true
+
+image: Visual Studio 2015
+
+platform:
+  - x64
+  - x86
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - platform: x64
+    - platform: x86
+
+install:
+  - ps: echo $PWD
+
+build_script:
+  - ps: .\build.ps1
+
+after_build:
+  - ps: |
+      $n = Get-ChildItem -Path .\build\ -Filter *.nupkg | Select-Object -First 1
+      If (!$n) { throw "Missing nupkg." }
+      Push-AppveyorArtifact $n.FullName -DeploymentName chocolatey
+
+test_script:
+  - ps: .\tests\install.ps1
+  - ps: .\tests\run-meteor.ps1
+  - ps: .\tests\uninstall.ps1
+  # Make sure that it's no longer installed.
+  - ps: If ((.\tests\run-meteor.ps1)) { throw }
+
+deploy:
+  - provider: NuGet
+    name: chocolatey
+    server: https://push.chocolatey.org/
+    api_key:
+      # This is encrypted with https://ci.appveyor.com/tools/encrypt.
+      secure: RBCK168BKPpK9Kky65YFXVpQYl5YFIJ/+Lk4Ka+nZmJZX6aFbMD+fJI+arYMOhEF
+    skip_symbols: true
+    artifact: /^meteor.*\.nupkg/
+    on:
+      branch: master
+      platform: x64

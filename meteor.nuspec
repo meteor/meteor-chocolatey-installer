@@ -4,7 +4,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>meteor</id>
-    <version>0.0.1-beta-4</version>
+    <version>0.0.1</version>
     <packageSourceUrl>https://github.com/meteor/meteor-chocolatey-installer/</packageSourceUrl>
     <owners>Meteor Development Group, Inc.</owners>
     <title>Meteor</title>
@@ -31,6 +31,10 @@ With Meteor you write apps:
 
 > As with the previous Meteor installer, Meteor will be installed into `%LocalAppData%\.meteor`, which also serves as a global cache for all Meteor packages.  Re-installing or uninstalling Meteor will automatically purge this directory.
     </description>
+    <dependencies>
+      <!-- For Get-PackageParameters support until 2018-01-01: git.io/vdHD8 -->
+      <dependency id="chocolatey-core.extension" version="1.1.0" />
+    </dependencies>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
