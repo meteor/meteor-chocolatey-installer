@@ -1,0 +1,1 @@
+& choco.exe uninstall -fy meteor
