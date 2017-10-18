@@ -1,3 +1,6 @@
+Write-Host "Installing chocolatey-core extensions..." -ForegroundColor Magenta
+& choco.exe install chocolatey-core.extension
+
 # Trying to install the package we just made.
 $nupkg = Get-ChildItem -Path .\build\ -Filter '*.nupkg' | Select-Object -First 1
 
