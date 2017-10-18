@@ -13,7 +13,7 @@ $installerTempDir = Get-InstallerTempDirectory
 Assert-LocalAppData
 
 # If an installation from the (deprecated) installer was found, uninstall it.
-Remove-OldMeteorInstall
+Remove-OldMeteorInstallerIfDetected
 
 # If the data from a previous install was found, delete it.
 Remove-MeteorDataDirectory

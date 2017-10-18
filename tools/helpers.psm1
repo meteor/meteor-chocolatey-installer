@@ -115,7 +115,7 @@ Function Remove-DirectoryRecursively {
   Previously, Meteor was installed with a WiX-based installer.  This installer
   is no longer actively maintained and this removes any such install.
 #>
-Function Remove-OldMeteorInstall {
+Function Remove-OldMeteorInstallerIfDetected {
   [array]$existing = Get-UninstallRegistryKey -SoftwareName "Meteor"
   If ($existing.Count -And $existing.QuietUninstallString) {
     Write-Output "$existing"
@@ -131,5 +131,5 @@ Export-ModuleMember -Function `
   Get-MeteorDataDirectory,
   Initialize-MeteorDataDirectory,
   New-BootstrapLinkQueryString,
-  Remove-OldMeteorInstall,
-  Remove-MeteorDataDirectory
+  Remove-MeteorDataDirectory,
+  Remove-OldMeteorInstallerIfDetected
