@@ -118,8 +118,13 @@ Function Remove-DirectoryRecursively {
 Function Remove-OldMeteorInstallerIfDetected {
   [array]$existing = Get-UninstallRegistryKey -SoftwareName "Meteor"
   If ($existing.Count -And $existing.QuietUninstallString) {
-    Write-Output "$existing"
     Write-Output "Removing exising Meteor installation with installer"
+
+    # It should be much quicker to uninstall if we remove the data directory
+    # using our own mechanism, without waiting for the installer, which may not
+    # work properly with long file paths.
+    Remove-MeteorDataDirectory
+
     Write-Output " => $($existing.QuietUninstallString)"
     & cmd /c $($existing.QuietUninstallString)
   }
