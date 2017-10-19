@@ -23,7 +23,7 @@ If ($releaseVersion) {
   & choco.exe install meteor --force --yes -d `
     --allow-downgrade `
     --source $buildDirectory `
-    --params="'/RELEASE:${releaseVersion}'"
+    --params="'/Release:${releaseVersion}'"
 } Else {
   & choco.exe install meteor --force --yes -d `
     --allow-downgrade `
