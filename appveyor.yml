@@ -33,10 +33,6 @@ after_build:
 test_script:
   - ps: .\tests\install.ps1
   - ps: .\tests\run-meteor-version.ps1
-  - ps: |
-      meteor create test-default-meteor
-      cd test-default-meteor
-      meteor build ..\
   - ps: .\tests\uninstall.ps1
   # Make sure that it's no longer installed.
   - ps: If (.\tests\run-meteor-version.ps1) { throw }
