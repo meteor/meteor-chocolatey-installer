@@ -35,7 +35,10 @@ test_script:
   - ps: .\tests\run-meteor.ps1
   - ps: .\tests\uninstall.ps1
   # Make sure that it's no longer installed.
-  - ps: If ((.\tests\run-meteor.ps1)) { throw }
+  - ps: If (.\tests\run-meteor.ps1) { throw }
+  # Try another version.
+  - ps: .\tests\install.ps1 -ReleaseVersion 1.6-rc.15
+  - ps: If (!(.\tests\run-meteor.ps1 -Eq '1.6-rc.15')) { throw }
 
 before_deploy:
   - ps: |

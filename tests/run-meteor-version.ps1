@@ -12,15 +12,15 @@ $env:Path += ";${meteorDir}"
 Write-Host "Running 'meteor --version'..." -ForegroundColor Magenta
 # Try calling it!
 try {
-  & "meteor" --version
+  $result = (& "meteor" --version)
   $meteorExitCode = $LASTEXITCODE
 } catch {
   # Nothing means it worked.
 }
 
-Write-Host "The Meteor Exit Code was $meteorExitCode"
-
 # If there was an error, Exit 1.
 If ($meteorExitCode -ne 0) {
   Exit 1
 }
+
+$result -Replace '^Meteor '
