@@ -4,6 +4,9 @@ skip_branch_with_pr: true
 
 image: Visual Studio 2015
 
+environment:
+  CHOCOLATEY_PACKAGE_NAME: meteor
+
 platform:
   - x64
   - x86
@@ -24,7 +27,8 @@ after_build:
   - ps: |
       $n = Get-ChildItem -Path .\build\ -Filter *.nupkg | Select-Object -First 1
       If (!$n) { throw "Missing nupkg." }
-      Push-AppveyorArtifact $n.FullName -DeploymentName Chocolatey
+      Push-AppveyorArtifact ".\$($env:CHOCOLATEY_PACKAGE_NAME).nuspec" -DeploymentName Nuspec
+      Push-AppveyorArtifact $n.FullName -DeploymentName Nupkg
 
 test_script:
   - ps: .\tests\install.ps1
@@ -33,10 +37,41 @@ test_script:
   # Make sure that it's no longer installed.
   - ps: If ((.\tests\run-meteor.ps1)) { throw }
 
+before_deploy:
+  - ps: |
+      if (!($artifacts.Nuspec)) {
+        throw "Missing Nuspec artifact."
+      }
+
+      if (!($artifacts.Nupkg)) {
+        throw "Missing Nupkg artifact."
+      }
+
+      $nuspec = Get-ChildItem $artifacts.Nuspec.path
+      $nupkg = Get-ChildItem $artifacts.Nupkg.path
+
+      # Get the version information out of the Nuspec
+      [xml]$nuspecXml = Get-Content -Path $nuspec.FullName
+      $packageId = $nuspecXml.package.metadata.id
+      $version = $nuspecXml.package.metadata.version
+
+      if ($packageId -ne $env:CHOCOLATEY_PACKAGE_NAME) {
+        throw "Wrong package 'id' in nuspec metadata! (${packageId})"
+      }
+
+      # Name of the nupkg artifact must match the metadata version.
+      if ($nupkg.Name -ne "${packageId}.${version}.nupkg") {
+        throw "Unexpected .nupkg filename $($nupkg.Name)"
+      }
+
+      If ($env:APPVEYOR_REPO_TAG_NAME -ne "release/${version}") {
+        throw "$($nupkg.Name) 'version' doesn't match the Git tag!"
+      }
+
 deploy:
   - provider: Environment
     name: Chocolatey
-    artifact: /^meteor.*\.nupkg/
+    artifact: Nupkg
     on:
       appveyor_repo_tag: true
       appveyor_repo_tag_name: /^release\/([0-9]+\.){2,3}[0-9]+(-(beta|rc)-[0-9]+)?$/
