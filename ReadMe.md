@@ -10,6 +10,8 @@ The installer is available on [Chocolatey](https://chocolatey.org/) (a Windows p
 C:\> choco install meteor
 ```
 
+> **Note:** This will only work for the latest published package.  When trying to install a package which is pre-release (or not yet approved by Chocolatey moderators), it is necessary to pass the explicit version.  For example: `choco install meteor --version 0.0.1`.
+
 ## Development
 This section is about making modifications, testing and publishing the Chocolatey `meteor` package itself, not for general Meteor development.  For more on Meteor, please see [Meteor on GitHub](https://github.com/meteor/meteor/).
 
