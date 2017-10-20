@@ -22,7 +22,7 @@ The `devel` branch is used for active development, including pull requests.  Off
 To build the `.nupkg` from the `.nuspec`, use `choco pack` with the `meteor.nuspec` found at the root of this repository.
 
 ```ps1
-C:\> choco pack meteor.nuspec --outputdirectory path/to/build-output
+C:\> choco pack meteor.nuspec --outputdirectory C:\path\to\build-output
 ```
 
 ### Testing
@@ -38,8 +38,10 @@ We use [AppVeyor](https://appveyor.com/) to automatically test the installer on 
 This is best performed in a VirtualBox or other disposable environment.
 
 ```ps1
-C:\> choco install -force -yes meteor --pre --source path/to/build-output
+C:\> choco install -force -yes meteor --pre --source "'C:\\path\\to\\build-output;https://chocolatey.org/api/v2/'"
 ```
+
+> **Note:** The escape characters in the `--source` path are important!
 
 ### Publishing
 
