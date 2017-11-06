@@ -1,4 +1,5 @@
 Write-Host "Ensuring 'build' directory exists..." -ForegroundColor Magenta
+$PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
 $buildDirectory = Join-Path $PSScriptRoot 'build'
 New-Item -Type Directory -Force $buildDirectory
 

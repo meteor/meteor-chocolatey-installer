@@ -28,9 +28,8 @@ Initialize-MeteorDataDirectory
 $gciTarGzArgs = @{
   'path'    = $toolsDir
   'filter'  = 'meteor-bootstrap-os.windows.*.tar.gz'
-  'file'    = $true
 }
-$bootstrapTarGzFileName = Get-ChildItem @gciTarGzArgs | Select -First 1
+$bootstrapTarGzFileName = Get-ChildItem @gciTarGzArgs | Where-Object { !$_.PSIsContainer } | Select -First 1
 $bootstrapTarGzPath = Join-Path $toolsDir $bootstrapTarGzFileName
 
 # If we find it locally, we'll extract it from there, but otherwise
@@ -64,9 +63,8 @@ if (Test-Path -LiteralPath $bootstrapTarGzPath -PathType 'Leaf') {
 $gciTarArgs = @{
   path    = $installerTempDir
   filter  = 'meteor-bootstrap-os.windows.*.tar'
-  file    = $true
 }
-$bootstrapTarFileName = Get-ChildItem @gciTarArgs | Select -First 1
+$bootstrapTarFileName = Get-ChildItem @gciTarArgs | Where-Object { !$_.PSIsContainer } | Select -First 1
 $bootstrapTarPath = Join-Path $installerTempDir $bootstrapTarFileName
 
 # Stop if for whatever reason, we failed to find the tarball.
