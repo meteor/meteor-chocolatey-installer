@@ -23,11 +23,13 @@ Write-Host "Trying to install $($nupkg.FullName)..." `
 If ($releaseVersion) {
   & choco.exe install meteor --force --yes -d `
     --allow-downgrade `
+    --prerelease `
     --source $buildDirectory `
     --params="'/Release:${releaseVersion}'"
 } Else {
   & choco.exe install meteor --force --yes -d `
     --allow-downgrade `
+    --prerelease `
     --source $buildDirectory
 }
 
