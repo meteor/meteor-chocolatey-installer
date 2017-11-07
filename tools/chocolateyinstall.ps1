@@ -26,10 +26,10 @@ Initialize-MeteorDataDirectory
 # can simply be placed in the tools directory.  It must match the
 # pattern we're looking for and exist, otherwise we'll just download it.
 $gciTarGzArgs = @{
-  'path'    = $toolsDir
-  'filter'  = 'meteor-bootstrap-os.windows.*.tar.gz'
+  path    = $toolsDir
+  filter  = 'meteor-bootstrap-os.windows.*.tar.gz'
 }
-$bootstrapTarGzFileName = Get-ChildItem @gciTarGzArgs | Where-Object { !$_.PSIsContainer } | Select -First 1
+$bootstrapTarGzFileName = Get-ChildItem @gciTarGzArgs | Select -First 1
 $bootstrapTarGzPath = Join-Path $toolsDir $bootstrapTarGzFileName
 
 # If we find it locally, we'll extract it from there, but otherwise
@@ -64,7 +64,7 @@ $gciTarArgs = @{
   path    = $installerTempDir
   filter  = 'meteor-bootstrap-os.windows.*.tar'
 }
-$bootstrapTarFileName = Get-ChildItem @gciTarArgs | Where-Object { !$_.PSIsContainer } | Select -First 1
+$bootstrapTarFileName = Get-ChildItem @gciTarArgs | Select -First 1
 $bootstrapTarPath = Join-Path $installerTempDir $bootstrapTarFileName
 
 # Stop if for whatever reason, we failed to find the tarball.
