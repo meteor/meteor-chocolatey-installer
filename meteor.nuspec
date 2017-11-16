@@ -19,6 +19,7 @@
     <bugTrackerUrl>https://github.com/meteor/meteor/issues</bugTrackerUrl>
     <tags>meteor</tags>
     <summary>Meteor, the JavaScript App Platform</summary>
+    <releaseNotes>https://github.com/meteor/meteor-chocolatey-installer/blob/master/CHANGELOG.md</releaseNotes>
     <description>
 Meteor is an ultra-simple environment for building modern web
 applications.
