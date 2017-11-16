@@ -4,7 +4,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>meteor</id>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packageSourceUrl>https://github.com/meteor/meteor-chocolatey-installer/</packageSourceUrl>
     <owners>Meteor Development Group, Inc.</owners>
     <title>Meteor</title>
@@ -19,6 +19,7 @@
     <bugTrackerUrl>https://github.com/meteor/meteor/issues</bugTrackerUrl>
     <tags>meteor</tags>
     <summary>Meteor, the JavaScript App Platform</summary>
+    <releaseNotes>https://github.com/meteor/meteor-chocolatey-installer/blob/master/CHANGELOG.md</releaseNotes>
     <description>
 Meteor is an ultra-simple environment for building modern web
 applications.

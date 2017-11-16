@@ -4,6 +4,9 @@ skip_branch_with_pr: true
 
 image: Visual Studio 2015
 
+environment:
+  CHOCOLATEY_PACKAGE_NAME: meteor
+
 platform:
   - x64
   - x86
@@ -24,24 +27,59 @@ after_build:
   - ps: |
       $n = Get-ChildItem -Path .\build\ -Filter *.nupkg | Select-Object -First 1
       If (!$n) { throw "Missing nupkg." }
-      Push-AppveyorArtifact $n.FullName -DeploymentName chocolatey
+      Push-AppveyorArtifact ".\$($env:CHOCOLATEY_PACKAGE_NAME).nuspec" -DeploymentName Nuspec
+      Push-AppveyorArtifact $n.FullName -DeploymentName Nupkg
 
 test_script:
-  - ps: .\tests\install.ps1
-  - ps: .\tests\run-meteor.ps1
-  - ps: .\tests\uninstall.ps1
+  - ps: powershell.exe -version 2 .\tests\install.ps1
+  - ps: powershell.exe -version 2 .\tests\run-meteor-version.ps1
+  - ps: powershell.exe -version 2 .\tests\uninstall.ps1
   # Make sure that it's no longer installed.
-  - ps: If ((.\tests\run-meteor.ps1)) { throw }
+  - ps: If (.\tests\run-meteor-version.ps1) { throw }
+  # Try another release, using the '/Release:x.y.z' flag.
+  - ps: powershell.exe -version 2 .\tests\install.ps1 -ReleaseVersion 1.6-rc.15
+  - ps: If (!(.\tests\run-meteor-version.ps1 -Eq '1.6-rc.15')) { throw }
+  - ps: |
+      meteor create --release 1.6-rc.15 test-other-release
+      cd test-other-release
+      meteor build ..\
+
+before_deploy:
+  - ps: |
+      if (!($artifacts.Nuspec)) {
+        throw "Missing Nuspec artifact."
+      }
+
+      if (!($artifacts.Nupkg)) {
+        throw "Missing Nupkg artifact."
+      }
+
+      $nuspec = Get-ChildItem $artifacts.Nuspec.path
+      $nupkg = Get-ChildItem $artifacts.Nupkg.path
+
+      # Get the version information out of the Nuspec
+      [xml]$nuspecXml = Get-Content -Path $nuspec.FullName
+      $packageId = $nuspecXml.package.metadata.id
+      $version = $nuspecXml.package.metadata.version
+
+      if ($packageId -ne $env:CHOCOLATEY_PACKAGE_NAME) {
+        throw "Wrong package 'id' in nuspec metadata! (${packageId})"
+      }
+
+      # Name of the nupkg artifact must match the metadata version.
+      if ($nupkg.Name -ne "${packageId}.${version}.nupkg") {
+        throw "Unexpected .nupkg filename $($nupkg.Name)"
+      }
+
+      If ($env:APPVEYOR_REPO_TAG_NAME -ne "release/${version}") {
+        throw "$($nupkg.Name) 'version' doesn't match the Git tag!"
+      }
 
 deploy:
-  - provider: NuGet
-    name: chocolatey
-    server: https://push.chocolatey.org/
-    api_key:
-      # This is encrypted with https://ci.appveyor.com/tools/encrypt.
-      secure: RBCK168BKPpK9Kky65YFXVpQYl5YFIJ/+Lk4Ka+nZmJZX6aFbMD+fJI+arYMOhEF
-    skip_symbols: true
-    artifact: /^meteor.*\.nupkg/
+  - provider: Environment
+    name: Chocolatey
+    artifact: Nupkg
     on:
-      branch: master
+      appveyor_repo_tag: true
+      appveyor_repo_tag_name: /^release\/([0-9]+\.){2,3}[0-9]+(-(beta|rc)-[0-9]+)?$/
       platform: x64
