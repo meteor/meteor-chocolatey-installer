@@ -16,6 +16,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/meteor/meteor</projectSourceUrl>
     <docsUrl>https://docs.meteor.com/</docsUrl>
+    <mailingListUrl>https://forums.meteor.com/</mailingListUrl>
     <bugTrackerUrl>https://github.com/meteor/meteor/issues</bugTrackerUrl>
     <tags>meteor nodejs node javascript platform development dev foss</tags>
     <summary>Meteor, the JavaScript App Platform</summary>
