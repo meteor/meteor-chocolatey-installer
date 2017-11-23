@@ -17,7 +17,7 @@
     <projectSourceUrl>https://github.com/meteor/meteor</projectSourceUrl>
     <docsUrl>https://docs.meteor.com/</docsUrl>
     <bugTrackerUrl>https://github.com/meteor/meteor/issues</bugTrackerUrl>
-    <tags>meteor</tags>
+    <tags>meteor nodejs node javascript platform development dev foss</tags>
     <summary>Meteor, the JavaScript App Platform</summary>
     <releaseNotes>https://github.com/meteor/meteor-chocolatey-installer/blob/master/CHANGELOG.md</releaseNotes>
     <description>
