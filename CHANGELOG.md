@@ -1,6 +1,6 @@
 # Meteor Chocolatey Installer Changelog
 
-## 0.0.2, TBD
+## 0.0.2, 2017-11-23
 
 * Support for PowerShell 2.0 by using older CmdLet syntax, enabling the
   installer to work on Windows Vista (and other older Windows releases).
