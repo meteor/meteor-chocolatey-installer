@@ -25,8 +25,15 @@ On the other hand the installer, which focuses on installing the Meteor files ne
 Specific versions of Meteor can be installed using Chocoloatey's `--params` argument which will download that specific version from Meteor's installation server.  For example, to install Meteor 1.5.4.4:
 
 ```ps1
-C:\> choco install meteor --params="'/RELEASE:1.5.4.4'"
+C:\> choco install meteor --params="'/RELEASE:1.6.0.1'"
 ```
+
+> **Note:** Prior to Meteor 1.6, 64-bit versions were not available.  Therefore, in order to install versions prior to Meteor 1.6, you'll also need to pass Chocolatey's `--x86` option when running `choco install` on 64-bit Windows platforms.  For example:
+>
+> ```ps1
+> C:\> choco install meteor --x86 --params="'/RELEASE:1.5.4.4'"
+> ```
+
 
 ### Using a specific version of the installer
 
