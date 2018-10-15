@@ -100,8 +100,10 @@ $messageGettingStarted = @"
 
 Meteor has been installed!
 
-To get started fast:
+Get Started Fast:
 
+  Spin up a new (non-admin) shell
+  
   $ meteor create ~/my_cool_app
   $ cd ~/my_cool_app
   $ meteor
@@ -109,6 +111,8 @@ To get started fast:
 Or see the docs at:
 
   https://docs.meteor.com
+  
+NOTE: DO NOT RUN METEOR AS ADMIN
 
 ***************************************
 "@
