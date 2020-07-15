@@ -83,6 +83,24 @@ Function New-BootstrapLinkQueryString {
 
 <#
   .Synopsis
+  Obtain a checksum by release
+#>
+Function Get-Checksum {
+  Param (
+    [Parameter(Position=0)]
+    [string]$Release
+  )
+  # current release
+  $checksum = "25CEF0B5D7C59D4B2D0A45AC3B278C1F5257FEA3A92A578CFFEC9F115707CA22"
+
+  # release 1.6-rc.15
+  if ($Release -Eq '1.6-rc.15') {
+    $checksum = "BBE7DFB435F19AD0D25A04A2B81DE7C7CCBDAEDF60684F88BC16D84E068D8E58"
+  }
+}
+
+<#
+  .Synopsis
   Remove longer directory paths in a more aggressive way.
 
   .Description

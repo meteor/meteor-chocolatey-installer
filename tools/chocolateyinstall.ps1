@@ -10,8 +10,6 @@ $bootstrapLinkUrl = 'https://packages.meteor.com/bootstrap-link'
 
 $installerTempDir = Get-InstallerTempDirectory
 
-$checksums = "25CEF0B5D7C59D4B2D0A45AC3B278C1F5257FEA3A92A578CFFEC9F115707CA22", "BBE7DFB435F19AD0D25A04A2B81DE7C7CCBDAEDF60684F88BC16D84E068D8E58"
-
 Assert-LocalAppData
 
 # If an installation from the (deprecated) installer was found, uninstall it.
@@ -50,7 +48,7 @@ if (Test-Path -LiteralPath $bootstrapTarGzPath -PathType 'Leaf') {
     packageName   = $env:ChocolateyPackageName
     url64bit      = "${bootstrapLinkUrl}${bootstrapQueryString64}"
     unzipLocation = $installerTempDir
-    checksum64 = $checksums
+    checksum64 = Get-Checksum -Release $packageParameters.Release
     checksumType64 = "sha256"
   }
   Install-ChocolateyZipPackage @installTarGzArgs
