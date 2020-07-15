@@ -154,5 +154,6 @@ Export-ModuleMember -Function `
   Get-MeteorDataDirectory,
   Initialize-MeteorDataDirectory,
   New-BootstrapLinkQueryString,
+  Get-Checksum,
   Remove-MeteorDataDirectory,
   Remove-OldMeteorInstallerIfDetected
