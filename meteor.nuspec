@@ -4,7 +4,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>meteor</id>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <packageSourceUrl>https://github.com/meteor/meteor-chocolatey-installer/</packageSourceUrl>
     <owners>Meteor Development Group, Inc.</owners>
     <title>Meteor</title>
