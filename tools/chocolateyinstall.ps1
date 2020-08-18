@@ -48,6 +48,8 @@ if (Test-Path -LiteralPath $bootstrapTarGzPath -PathType 'Leaf') {
     packageName   = $env:ChocolateyPackageName
     url64bit      = "${bootstrapLinkUrl}${bootstrapQueryString64}"
     unzipLocation = $installerTempDir
+    checksum64 = Get-Checksum -Release $packageParameters.Release
+    checksumType64 = "sha256"
   }
   Install-ChocolateyZipPackage @installTarGzArgs
 }
