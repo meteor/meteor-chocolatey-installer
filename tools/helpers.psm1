@@ -83,24 +83,6 @@ Function New-BootstrapLinkQueryString {
 
 <#
   .Synopsis
-  Obtain a checksum by release
-#>
-Function Get-Checksum {
-  Param (
-    [Parameter(Position=0)]
-    [string]$Release
-  )
-  # current release
-  $checksum = "25CEF0B5D7C59D4B2D0A45AC3B278C1F5257FEA3A92A578CFFEC9F115707CA22"
-
-  # release 1.6-rc.15
-  if ($Release -Eq '1.6-rc.15') {
-    $checksum = "BBE7DFB435F19AD0D25A04A2B81DE7C7CCBDAEDF60684F88BC16D84E068D8E58"
-  }
-}
-
-<#
-  .Synopsis
   Remove longer directory paths in a more aggressive way.
 
   .Description
@@ -145,6 +127,123 @@ Function Remove-OldMeteorInstallerIfDetected {
 
     Write-Output " => $($existing.QuietUninstallString)"
     & cmd /c $($existing.QuietUninstallString)
+  }
+}
+
+<#
+  .Synopsis
+  Obtain a checksum by release
+#>
+Function Get-Checksum {
+  Param (
+    [Parameter(Position=0)]
+    [string]$Release
+  )
+  switch ($Release) {
+    '1.10.1' {
+      $checksum = "4ED9946063CF2A4BFBBC11417C01CC45CF53853E545EE9407A1C86E1677B5D05"
+      break
+    }
+    '1.9.3' {
+      $checksum = "BC8058A2DCBC33B71F6F15D935C0E524CB56838DB2967DBC6493A82566D1AA6B"
+      break
+    }
+    '1.9.2' {
+      $checksum = "945A463010F160C0413BC1EE1964857A8F9244EED69858142F644A5C7E1EF018"
+      break
+    }
+    '1.9.1' {
+      $checksum = "57C65077022A1041E0C9579379312470E6353FF2F57A60D60B1895C57D2989F8"
+      break
+    }
+    '1.9' {
+      $checksum = "4CE976625F444DED91EC26337E0D7B1EC91A62FA9A078DE89567BF6141C18180"
+      break
+    }
+    '1.8.3' {
+      $checksum = "059E7B312657D53A99885C5BD4C1E833BC55BA841EE3C24F2028467EE79DB0F5"
+      break
+    }
+    '1.8.2' {
+      $checksum = "FB31A82A7B8E90E1FD7286874C9144B7E5B9F6CB89227294F9E51AF507A28B2C"
+      break
+    }
+    '1.8.1' {
+      $checksum = "05B37062FD251432F5469B42DD64A60F83593CF0A0C1968C5A1977F5F96AB199"
+      break
+    }
+    '1.8.0.2' {
+      $checksum = "FCB2499FE6F078F7568ADD60B20C5FA6E21139550C00ECA2E3987FC42D727A3E"
+      break
+    }
+    '1.8.0.1' {
+      $checksum = "22AD86E226919E8838C0383C10D68CE9E94A242F75F3EA8A91581588B2F1C80F"
+      break
+    }
+    '1.8' {
+      $checksum = "E2709312C0E389507E287E65487789198FE338854DBA0D5058A844EF90C76153"
+      break
+    }
+    '1.7.0.5' {
+      $checksum = "60D698EF2A4F48C7463FAA17D432D936C845EF743EBD5DC06E344F0AB952A4E1"
+      break
+    }
+    '1.7.0.4' {
+      $checksum = "AFA7172E3D98E63E83EA20DBE169FE5034087C9D9F725B9AEE3134CFB3831886"
+      break
+    }
+    '1.7.0.3' {
+      $checksum = "82BA4AE44919FC85C2911EC5C4A7B11927800BBBADF2B353FF98B7A57574336D"
+      break
+    }
+    '1.7.0.2' {
+      $checksum = "132F5C87577289680D805DB5DCE703C72F0481AADF34777DD6090E30C9B95DFC"
+      break
+    }
+    '1.7.0.1' {
+      $checksum = "1667D8473A333666799B91AC176CB58D0F32950137FFD995239A8F139C5C2276"
+      break
+    }
+    '1.7' {
+      $checksum = "8F956FB0BB9A6B0470AAE5D76A71E8708D907AA3662821A6F92417E090520644"
+      break
+    }
+    '1.6-rc.15' {
+      $checksum = "BBE7DFB435F19AD0D25A04A2B81DE7C7CCBDAEDF60684F88BC16D84E068D8E58"
+      break
+    }
+    '1.6-rc.14' {
+      $checksum = "C782E3465704873999F1A956270C55E42BC7AECB1EBA14086AFB3BA11C137DF4"
+      break
+    }
+    '1.6-rc.13' {
+      $checksum = "5F1BE7CE007D90767F4A6A89FCE228CA503FF79BB8767258E60A72D22397B5DB"
+      break
+    }
+    '1.6.1.4' {
+      $checksum = "FD64A981633D1DCBC87019F4F6899599A44BFD3A86579F34863FCFFAA2CB9BC4"
+      break
+    }
+    '1.6.1.1' {
+      $checksum = "D6A92DAA169D62E30F81644A50560C1FB80C3F5CA1A50522EE9D9B588230B01A"
+      break
+    }
+    '1.6.0.1' {
+      $checksum = "49B12E6BE26F93AE951209DBD979346C7677D490034184192B1CA95BBB78C0F0"
+      break
+    }
+    '1.6.1' {
+      $checksum = "12854CCAB3F0FC94AB428DECCA29D3C625FAB2D0FEC0E87F8809DAFF19140A10"
+      break
+    }
+    '1.6' {
+      $checksum = "9087FA9E26F1597481C87A69E7D991BA4F91584021F48F5A60D46C06633DFE83"
+      break
+    }
+    default {
+      # current release
+      $checksum = "25CEF0B5D7C59D4B2D0A45AC3B278C1F5257FEA3A92A578CFFEC9F115707CA22"
+    }
   }
 }
 
