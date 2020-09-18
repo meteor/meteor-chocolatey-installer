@@ -241,7 +241,7 @@ Function Get-Checksum {
       break
     }
     default {
-      # current release
+      # current release v 1.11
       $checksum = "25CEF0B5D7C59D4B2D0A45AC3B278C1F5257FEA3A92A578CFFEC9F115707CA22"
     }
   }
