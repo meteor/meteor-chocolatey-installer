@@ -140,6 +140,10 @@ Function Get-Checksum {
     [string]$Release
   )
   switch ($Release) {
+    '1.11' {
+      $checksum = "25CEF0B5D7C59D4B2D0A45AC3B278C1F5257FEA3A92A578CFFEC9F115707CA22"
+      break
+    }
     '1.10.1' {
       $checksum = "4ED9946063CF2A4BFBBC11417C01CC45CF53853E545EE9407A1C86E1677B5D05"
       break
@@ -241,8 +245,8 @@ Function Get-Checksum {
       break
     }
     default {
-      # current release
-      $checksum = "25CEF0B5D7C59D4B2D0A45AC3B278C1F5257FEA3A92A578CFFEC9F115707CA22"
+      # current release v 1.11.1
+      $checksum = "2EAE676CEF07425FBE6A3F79F75A6984A8A6C3137E6961883DC8CF2D8D56A053"
     }
   }
 }
