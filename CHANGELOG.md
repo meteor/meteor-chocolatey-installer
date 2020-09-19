@@ -1,6 +1,6 @@
 # Meteor Chocolatey Installer Changelog
 
-## 0.0.3, 2019-05-22
+## 0.0.3 - 0.0.4, 2019-05-22
 
 * Since version 1.10.1 we stop support to systems 32-bit (https://github.com/meteor/meteor/blob/devel/History.md#v1101-2020-03-12), but our installer on Windows (Chocolatey) was still trying to download the 32-bit version, and for that, the users ended up with an error saying that was not possible download Meteor. Now Chocolatey shouldn't try to download the 32-bit Meteor version.
 
