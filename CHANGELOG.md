@@ -1,5 +1,13 @@
 # Meteor Chocolatey Installer Changelog
 
+## 0.0.5 2020-09-19
+
+* Adding checksum to Meteor version 1.11.1
+
+## 0.0.3 - 0.0.4, 2020-08-22
+
+* Since version 1.10.1 we stop support to systems 32-bit (https://github.com/meteor/meteor/blob/devel/History.md#v1101-2020-03-12), but our installer on Windows (Chocolatey) was still trying to download the 32-bit version, and for that, the users ended up with an error saying that was not possible download Meteor. Now Chocolatey shouldn't try to download the 32-bit Meteor version.
+
 ## 0.0.2, 2017-11-23
 
 * Support for PowerShell 2.0 by using older CmdLet syntax, enabling the

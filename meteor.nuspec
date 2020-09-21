@@ -4,7 +4,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>meteor</id>
-    <version>0.0.2</version>
+    <version>0.0.5</version>
     <packageSourceUrl>https://github.com/meteor/meteor-chocolatey-installer/</packageSourceUrl>
     <owners>Meteor Development Group, Inc.</owners>
     <title>Meteor</title>
@@ -16,8 +16,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/meteor/meteor</projectSourceUrl>
     <docsUrl>https://docs.meteor.com/</docsUrl>
+    <mailingListUrl>https://forums.meteor.com/</mailingListUrl>
     <bugTrackerUrl>https://github.com/meteor/meteor/issues</bugTrackerUrl>
-    <tags>meteor</tags>
+    <tags>meteor nodejs node javascript platform development dev foss</tags>
     <summary>Meteor, the JavaScript App Platform</summary>
     <releaseNotes>https://github.com/meteor/meteor-chocolatey-installer/blob/master/CHANGELOG.md</releaseNotes>
     <description>

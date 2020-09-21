@@ -41,17 +41,15 @@ if (Test-Path -LiteralPath $bootstrapTarGzPath -PathType 'Leaf') {
   }
   Get-ChocolateyUnzip @unzipLocalTarGzArgs
 } else {
-  $bootstrapQueryString32 = New-BootstrapLinkQueryString `
-    -Arch 'os.windows.x86_32' `
-    -Release $packageParameters.Release
   $bootstrapQueryString64 = New-BootstrapLinkQueryString `
     -Arch 'os.windows.x86_64' `
     -Release $packageParameters.Release
   $installTarGzArgs = @{
     packageName   = $env:ChocolateyPackageName
-    url           = "${bootstrapLinkUrl}${bootstrapQueryString32}"
     url64bit      = "${bootstrapLinkUrl}${bootstrapQueryString64}"
     unzipLocation = $installerTempDir
+    checksum64 = Get-Checksum -Release $packageParameters.Release
+    checksumType64 = "sha256"
   }
   Install-ChocolateyZipPackage @installTarGzArgs
 }
