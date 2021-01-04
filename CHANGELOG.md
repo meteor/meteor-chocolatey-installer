@@ -1,6 +1,6 @@
 # Meteor Chocolatey Installer Changelog
 
-## 0.0.6 2020-10-04
+## 0.0.6 - 0.0.8 2020-10-04
 
 * Adding checksum to Meteor version 1.12
 
