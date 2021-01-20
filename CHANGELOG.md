@@ -1,5 +1,13 @@
 # Meteor Chocolatey Installer Changelog
 
+## 0.0.10 2021-01-20
+
+* Adding checksum to Meteor version 2.0
+
+## 0.0.6 - 0.0.8 2020-10-04
+
+* Adding checksum to Meteor version 1.12
+
 ## 0.0.5 2020-09-19
 
 * Adding checksum to Meteor version 1.11.1
