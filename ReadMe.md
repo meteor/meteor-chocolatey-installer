@@ -1,4 +1,15 @@
 ﻿# Meteor Chocolatey Installer
+ 
+ ## DEPRECATED
+ 
+ This installer is deprecated.
+ 
+ Now you can install Meteor on Windows using:
+ ```bash
+ npm install -g meteor
+ ```
+ 
+ [Read more](https://github.com/meteor/meteor/blob/devel/npm-packages/meteor-installer/README.md)
 
 <h2>(Windows Only)</h2>
 
